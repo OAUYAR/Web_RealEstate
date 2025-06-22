@@ -13,6 +13,18 @@ namespace Web_RealEstate_API.Repositories.CategoryRepository
             _context = context;
         }
 
+        public async void CreateCategory(CreateCategoryDTO createCategoryDTO)
+        {
+            string query = "INSERT INTO Category (Name,Status) VALUES (@categoryName,@categoryStatus)";
+            var parameters = new DynamicParameters();
+            parameters.Add("categoryName", createCategoryDTO.Name);
+            parameters.Add("categoryStatus", true);
+            using(var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
         public async Task<IEnumerable<ResultCategoryDTO>> GetAllCategoriesAsync()
         {
             string query = "SELECT * FROM Category";
