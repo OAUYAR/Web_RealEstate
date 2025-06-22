@@ -1,3 +1,6 @@
+using Web_RealEstate_API.Models.DapperContext;
+using Web_RealEstate_API.Repositories.CategoryRepository;
+
 namespace Web_RealEstate_UI
 {
     public class Program
@@ -5,6 +8,7 @@ namespace Web_RealEstate_UI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -28,7 +32,7 @@ namespace Web_RealEstate_UI
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Profile}/{action=Index}/{id?}");
 
             app.Run();
         }

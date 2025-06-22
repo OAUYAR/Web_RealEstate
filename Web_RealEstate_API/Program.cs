@@ -1,4 +1,7 @@
 
+using Web_RealEstate_API.Models.DapperContext;
+using Web_RealEstate_API.Repositories.CategoryRepository;
+
 namespace Web_RealEstate_API
 {
     public class Program
@@ -6,6 +9,10 @@ namespace Web_RealEstate_API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //Manuel registration of Dapper Context and Repository
+            builder.Services.AddTransient<Context>();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             // Add services to the container.
 
